@@ -1,0 +1,28 @@
+<%- include ('partials/header') %>
+
+
+<div class="container">
+    
+<h1>Transaction History</h1>
+    <table class="table table-striped">
+        <tr class="thead-dark">
+            <th scope="col">Sno</th>
+            <th scope="col">Sender ID</th>
+            <th scope="col">Receiver ID</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+        </tr>
+
+        <% results.forEach(function (result){ %>
+            <tr>
+                <th scope="row"><%= result.sno %></th>
+                <td><%= result.sender %></td>
+                <td><%= result.receiver %></td>
+                <td><%= result.balance %></td>
+                <td><%= result.datetime %></td>
+            </tr>
+        <%  }) %>
+    
+    </table>
+
+</div>

@@ -1,0 +1,11 @@
+img{
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+}
+
+#box{
+    width: 400px;
+    text-align: center;
+    margin: auto;
+}

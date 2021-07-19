@@ -1,0 +1,28 @@
+<%- include ('partials/header') %>
+
+
+<div class="container">
+    <table class="table table-striped">
+        <tr class="thead-dark">
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">balance</th>
+            <th scope="col">tranfer</th>
+        </tr>
+
+        <% results.forEach(function (result){ %>
+            <tr>
+                <th scope="row"><%= result.id %></th>
+                <td><%= result.name %></td>
+                <td><%= result.email %></td>
+                <td><%= result.balance %></td>
+                <td> <a href="/all/<%= result.id %>">View & Transfer</a> </td>
+            </tr>
+        <%  }) %>
+    
+    </table>
+
+</div>
+
+<%- include ('partials/footer') %>

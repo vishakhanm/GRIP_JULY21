@@ -1,0 +1,71 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+    <table class="table border" id="balance">
+        <tr class="thead-dark">
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">balance</th>
+        </tr>
+        <% result1.forEach(function (result){ %>
+        <tr >
+            <th scope="row"><%= result.id %></th>
+            <td><%= result.name %></td>
+            <td><%= result.email %></td>
+            <td><%= result.balance %></td>
+        </tr>
+        <%  }) %>
+    
+    </table>
+
+    <div class="mt-5 border border-dark rounded p-3" id="box">
+        <h3>Transfer to:</h3>
+        <form action="/transfer/<%= id %>" method="POST" name="transfer" onsubmit="return validate()">
+            <div class="form-group">
+                <select name="receiver" id="receiver" required class="form-control">
+                    <table>
+                        <% result2.forEach(function (result){ %>
+                            <option value="<%= result.id %>" >
+                                <tr>
+                                    <td><%= result.id %></td>
+                                    <td><%= result.name %></td>
+                                    <td><%= result.email %></td>
+                                </tr>
+                            </option>
+                        <%  }) %>
+                    </table>
+                </select>    
+            </div>
+            <div class="form-group">
+                <label for="amount">Enter Amount:</label>
+                <input type="number" name="amount" id="amount" class="form-control" required>    
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Transfer" class="form-control btn btn-primary">
+            </div>
+        </form>
+       
+    </div>
+    
+</div>
+
+<script>
+   
+   function validate(){
+    var amt, balance;
+    amt = document.forms["transfer"]["amount"].value;
+    balance = document.getElementById("balance").rows[1].cells[3].innerHTML
+    var href = '/all/'+document.getElementById("balance").rows[1].cells[0].innerHTML;
+    // alert(href);
+
+        if(amt < 0 || amt > balance){
+            alert('Enter a valid amount to transfer');
+            // location = window.location[href];
+            return false;
+        }
+   }
+  
+</script>
+
+<%- include ('partials/footer') %>
